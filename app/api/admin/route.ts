@@ -7,7 +7,7 @@ export async function GET(request: Request) {
   const password = searchParams.get('password')
 
   const adminUser = process.env.ADMIN_USERNAME || 'adminhci'
-  const adminPass = process.env.ADMIN_PASSWORD || 'adminhci'
+  const adminPass = process.env.ADMIN_PASSWORD || 'admin12345'
 
   if (username !== adminUser || password !== adminPass) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
