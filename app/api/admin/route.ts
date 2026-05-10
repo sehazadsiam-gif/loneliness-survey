@@ -3,9 +3,10 @@ import { getServiceClient } from '@/lib/supabase'
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
+  const username = searchParams.get('username')
   const password = searchParams.get('password')
 
-  if (password !== process.env.ADMIN_PASSWORD) {
+  if (username !== process.env.ADMIN_USERNAME || password !== process.env.ADMIN_PASSWORD) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
